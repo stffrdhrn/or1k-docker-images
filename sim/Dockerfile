@@ -1,5 +1,8 @@
 FROM or1k-base:latest
 
+RUN apt-get update && apt-get install -y \
+ libreadline8
+
 ENV OR1KSIM=2023-07-23
 RUN mkdir -p /opt/or1k \
   && cd /opt/or1k \

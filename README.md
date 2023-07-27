@@ -2,14 +2,24 @@
 
 A few docker images that help setup a development environment.
 
-This can be built using: `build.sh`.
+## How to get the images:
 
-Once build the following images will be created.
+### Build yourself
+
+The images can be built using: `build.sh`.
+
+Once built the following images will be created.
 
  - `or1k-sim-env` - a shell which contains an `or1k-elf-gcc` cross compiler
    as well as the openrisc simulator `or1ksim`.
  - `or1k-verilog-env` - a shell which contains an `or1k-elf-gcc` cross compiler
    as well a fusesoc and verilog modules used to run OpenRISC verilog simulations.
+
+### Pull from dockerhub
+
+The images have been published to dockerhub and can be found here:
+
+ https://hub.docker.com/repositories/stffrdhrn
 
 ## How to use the images:
 

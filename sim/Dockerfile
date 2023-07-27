@@ -1,7 +1,8 @@
-FROM or1k-base:latest
+FROM or1k-base-stripped:latest
 
 RUN apt-get update && apt-get install -y \
- libreadline8
+ libreadline8 \
+ curl
 
 ENV OR1KSIM=2023-07-23
 RUN mkdir -p /opt/or1k \

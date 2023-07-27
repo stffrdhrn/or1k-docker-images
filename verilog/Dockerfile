@@ -1,6 +1,5 @@
-FROM or1k-base:latest
+FROM or1k-base-stripped:latest
 RUN apt-get update && apt-get install -y \
- build-essential \
  git \
  iverilog \
  libelf-dev \

@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y \
  libreadline8 \
  curl
 
-ENV OR1KSIM=2023-07-23
+ENV OR1KSIM=2023-08-20
 RUN mkdir -p /opt/or1k \
   && cd /opt/or1k \
   && curl --remote-name --location \

@@ -1,16 +1,20 @@
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
- curl
+ curl xz-utils
 
 RUN groupadd -g 998 or1kuser && \
     useradd -m -u 998 -g or1kuser or1kuser
 
-ENV OE_TOOLCHAIN=ubuntu2204-gcc13.1.0
+ARG OR1K_TOOLCHAIN_PKG=or1k
+ARG OR1K_TOOLCHAIN_VERSION=15.1.0-20250621
+ARG OR1K_TOOLCHAIN_SITE=https://github.com/stffrdhrn/or1k-toolchain-build/releases/download
 RUN mkdir -p /opt/or1k \
   && cd /opt/or1k \
   && curl --remote-name --location \
-    https://buildbot.embecosm.com/job/or1k-gcc-ubuntu2204-release/5/artifact/or1k-embecosm-${OE_TOOLCHAIN}.tar.gz \
-  && tar -xf or1k-embecosm-${OE_TOOLCHAIN}.tar.gz \
+   ${OR1K_TOOLCHAIN_SITE}/${OR1K_TOOLCHAIN_PKG}-${OR1K_TOOLCHAIN_VERSION}/or1k-elf-${OR1K_TOOLCHAIN_VERSION}.tar.xz \
+  && tar -xf or1k-elf-${OR1K_TOOLCHAIN_VERSION}.tar.xz \
   && rm /opt/or1k/*.tar.*
 
-ENV PATH "$PATH:/opt/or1k/or1k-embecosm-${OE_TOOLCHAIN}/bin"
+ENV PATH "$PATH:/opt/or1k/or1k-elf/bin"
+
+RUN or1k-elf-gcc --version

@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y \
 USER or1kuser
 ENV HOME /home/or1kuser
 
-ENV PATH "$PATH:/tmp/tools/or1k-embecosm-${OE_TOOLCHAIN}/bin"
+ENV PATH "$PATH:/opt/or1k/or1ksim/bin"
 ENV PATH "$PATH:$HOME/.local/bin"
 
-RUN pip install --user fusesoc
+RUN pip install --user --break-system-packages fusesoc
 RUN mkdir -p /tmp/src/cores
 WORKDIR /tmp/src/cores
 # Fusesoc init is now this

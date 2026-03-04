@@ -1,4 +1,4 @@
-FROM localhost/or1k-base:latest AS stripper
+FROM or1k-base:latest AS stripper
 
 RUN apt-get update && apt-get install -y \
  binutils \

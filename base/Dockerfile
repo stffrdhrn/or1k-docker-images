@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
- curl xz-utils
+ curl xz-utils \
+ libmpc3 \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 998 or1kuser && \
     useradd -m -u 998 -g or1kuser or1kuser

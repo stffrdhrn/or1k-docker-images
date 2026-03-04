@@ -1,8 +1,9 @@
-FROM or1k-base:latest AS stripper
+FROM localhost/or1k-base:latest AS stripper
 
 RUN apt-get update && apt-get install -y \
  binutils \
- file
+ file \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN find /opt/or1k/or1k-elf/ -exec file {} \; | grep 'ELF 64.*x86' |cut -d: -f1| xargs strip
 RUN for f in /opt/or1k/or1k-elf/or1k-elf/bin/*; do \
@@ -10,6 +11,9 @@ RUN for f in /opt/or1k/or1k-elf/or1k-elf/bin/*; do \
     done
 
 FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+ libmpc3 \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 998 or1kuser && \
     useradd -m -u 998 -g or1kuser or1kuser

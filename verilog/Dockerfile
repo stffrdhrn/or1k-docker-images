@@ -4,7 +4,8 @@ RUN apt-get update && apt-get install -y \
  iverilog \
  libelf-dev \
  python3-pip \
- xz-utils
+ xz-utils \
+ && rm -rf /var/lib/apt/lists/*
 
 USER or1kuser
 ENV HOME /home/or1kuser

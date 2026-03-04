@@ -3,7 +3,8 @@ FROM or1k-base-stripped:latest
 RUN apt-get update && apt-get install -y \
  libreadline8 \
  curl \
- xz-utils
+ xz-utils \
+ && rm -rf /var/lib/apt/lists/*
 
 ARG OR1KSIM_VERSION=2025-04-27
 RUN mkdir -p /opt/or1k \
